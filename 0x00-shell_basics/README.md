@@ -1,0 +1,1 @@
+This folder contains all the scripta for today's ALX Shell Basics projects.
