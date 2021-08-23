@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type d | wc -c
+find . -type d | wc -l | xargs -n 1 bash -c 'echo $(($1 - 1))' args
