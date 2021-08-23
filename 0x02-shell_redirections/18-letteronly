@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -x '[QWERTYUIOPAFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbn ]\+' --file=/etc/ssh/sshd_config
+grep -x '[QWERTYUIOPAFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbn ]\+' /etc/ssh/sshd_config
