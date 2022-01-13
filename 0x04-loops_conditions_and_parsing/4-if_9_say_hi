@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# This script is displaying "Best School" 10 times using while loop, and
-# prints Hi on the 9th iteration
+# Prints "Best School" 10 times using while loop, and prints Hi on the 9th
+# iteration
 
 i=0
 
-until [ $i == 10 ]
+while [ $i -le 9 ]
 do
   echo "Best School"
-  ((i++))
-  if [ $i == 9 ]
+  if [ $i == 8 ]
   then
       echo "Hi"
   fi
+  ((i++))
 done
