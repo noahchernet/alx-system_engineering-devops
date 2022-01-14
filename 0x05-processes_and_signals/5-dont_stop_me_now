@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Kills the `4-to_infinity_and_beyond` process initiated in another terminal
 
-kill "$(pgrep -x bash | tail -1)"
+kill -9 "$(pgrep -x bash | tail -1)"
