@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Kills process 7-highlander even if it traps SIGTERM
 
-pkill -9 ./7-highlander
+pkill --signal SIGKILL ./7-highlander
