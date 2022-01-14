@@ -2,5 +2,5 @@
 # Kills the `4-to_infinity_and_beyond` process initiated in another terminal
 
 # shellcheck disable=SC2009
-i="$(ps aux | grep "bash" | grep -v grep | awk '{print $2}' | tail -3 | head -1)"
+i="$(pgrep -x bash | tail -3 | head -1)"
 kill "$i"
