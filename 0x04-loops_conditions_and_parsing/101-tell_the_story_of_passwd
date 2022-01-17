@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Prints the contents of /etc/passwd stylized
+
+while IFS= read -r line ; do
+  name=$(cut -d: -f1 <<< "$line")
+  group_id=$(cut -d: -f2 <<< "$line")
+  home_dir=$(cut -d: -f3 <<< "$line")
+  cmd_shell=$(cut -d: -f4 <<< "$line")
+  uid=$(cut -d: -f5 <<< "$line")
+  pswd=$(cut -d: -f6 <<< "$line")
+
+  echo -n "The user $name is part of the $group_id gang, lives in $home_dir "
+  echo -n "and rides $cmd_shell. $uid's place is protected by the passcode "
+  echo "$pswd, more info about the user here: $uid"
+done < "/etc/passwd"
