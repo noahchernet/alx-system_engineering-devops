@@ -4,3 +4,10 @@
 # shellcheck disable=SC2009
 i="$(pgrep -x bash | tail -3 | head -1)"
 kill "$i"
+# Since the script is ran from the terminal, a SIGINT signal has to be passed
+# to kill the process. With `kill $i` only, the PID will disappear when using
+# `pgrep bash` to see if it's still running.
+# But, using `ps aux | grep 4-to_infinity_and_beyond` will show that the
+# process is still running, though it won't show on the terminal. Hence,
+# sending a SIGINT signal is required
+kill -9 "$i"
