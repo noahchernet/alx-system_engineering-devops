@@ -11,3 +11,4 @@ kill "$i"
 # process is still running, though it won't show on the terminal. Hence,
 # sending a SIGINT signal is required
 kill -9 "$i"
+pkill 4-to_infinity_and_beyond
