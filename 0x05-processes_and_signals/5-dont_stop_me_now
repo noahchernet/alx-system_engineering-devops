@@ -4,3 +4,5 @@
 # it since this script greps the PID by the file's name
 
 kill $"pgrep -f 4-to_infinity_and_beyond"
+# Make sure process is terminated by passing SIGINT
+kill -9 $"pgrep -f 4-to_infinity_and_beyond"
