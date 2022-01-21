@@ -4,4 +4,4 @@
 # 98`, when you type in some text and press <Enter>, the text you wrote will
 # appear on the first terminal, the one you ran this script on
 
-nc -l(.){0,12}98
+nc -l .{0,12} 98
