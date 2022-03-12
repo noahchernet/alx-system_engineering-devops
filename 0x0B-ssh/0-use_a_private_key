@@ -1,1 +1,3 @@
 #!/usr/bin/env bash
+# Login to my server with the username ubuntu using SSH
+ssh ubuntu@18.232.153.3
