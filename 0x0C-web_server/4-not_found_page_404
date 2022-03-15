@@ -1,1 +1,5 @@
 #!/usr/bin/env bash
+# Redirect unknown pages to a custom 404 page
+new_error_page="\tserver_name _;\n\terror_page 404 \/error.html;"
+sudo sed -i "s/\tserver_name _;/$new_error_page/" /etc/nginx/sites-available/default
+sudo service nginx reload
