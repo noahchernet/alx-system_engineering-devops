@@ -3,6 +3,9 @@
 # and changes the nginx landing page.
 sudo apt update
 sudo apt install nginx -y
+sudo ufw allow 'Nginx HTTP'
+sudo ufw allow 'Nginx HTTPS'
+sudo ufw allow 'Nginx Full'
 sudo rm /var/www/html/index.nginx-debian.html 
 sudo echo "Hello World!" | sudo tee -a /var/www/html/index.nginx-debian.html
 sudo sed -i "s/\tlisten [0-9].* default_server;*/\tlisten 80 default_server;/" /etc/nginx/sites-enabled/default
