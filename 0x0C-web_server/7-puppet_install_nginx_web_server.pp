@@ -4,6 +4,7 @@
 
 exec {'configure_nginx':
   command  => '
+  sudo apt install nginx -y
   sudo rm /var/www/html/index.nginx-debian.html;
   sudo echo "Hello World!" | sudo tee -a /var/www/html/index.nginx-debian.html;
   sudo sed -i "s/\tlisten [0-9].* default_server;*/\tlisten 80 default_server;/" /etc/nginx/sites-available/default;
