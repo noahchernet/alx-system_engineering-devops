@@ -12,4 +12,4 @@ sudo sed -i "s/\tlisten [0-9].* default_server;*/\tlisten 80 default_server;/" /
 sudo sed -i "s/\tlisten \[::\]:[0-9].* default_server;*/\tlisten [::]:80 default_server;/" /etc/nginx/sites-enabled/default
 sudo sed -i "s/\tlisten [0-9].* default_server;*/\tlisten 80 default_server;/" /etc/nginx/sites-available/default
 sudo sed -i "s/\tlisten \[::\]:[0-9].* default_server;*/\tlisten [::]:80 default_server;/" /etc/nginx/sites-available/default
-sudo service nginx reload
+sudo service nginx restart
