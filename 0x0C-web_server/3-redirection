@@ -1,21 +1,10 @@
 #!/usr/bin/env bash
 # Configures the location /redirect_me to point to another url
 
-# Contents of ./1-install_nginx_web_server to help setup a brand new
+# Sets up a brand new
 # Ubuntu machine with ngnix and the /redirect_me page
-sudo apt update
-sudo apt install nginx -y
-sudo ufw allow 'Nginx HTTP'
-sudo ufw allow 'Nginx HTTPS'
-sudo ufw allow 'Nginx Full'
-sudo rm /var/www/html/index.nginx-debian.html 
-sudo echo "Hello World!" | sudo tee -a /var/www/html/index.nginx-debian.html
-sudo sed -i "s/\tlisten [0-9].* default_server;*/\tlisten 80 default_server;/" /etc/nginx/sites-enabled/default
-sudo sed -i "s/\tlisten \[::\]:[0-9].* default_server;*/\tlisten [::]:80 default_server;/" /etc/nginx/sites-enabled/default
-sudo sed -i "s/\tlisten [0-9].* default_server;*/\tlisten 80 default_server;/" /etc/nginx/sites-available/default
-sudo sed -i "s/\tlisten \[::\]:[0-9].* default_server;*/\tlisten [::]:80 default_server;/" /etc/nginx/sites-available/default
-sudo service nginx restart
-
+sudo apt -y update
+sudo apt -y install nginx 
 # Set /redirect_me to redirect to another webpage
 new_url="\troot \/var\/www\/html;\n\trewrite ^\/redirect_me$ https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
 sudo sed -i "s/\troot \/var\/www\/html;/$new_url/" /etc/nginx/sites-available/default
