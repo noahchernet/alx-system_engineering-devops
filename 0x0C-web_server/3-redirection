@@ -6,12 +6,20 @@
 sudo apt -y update
 sudo apt -y install nginx 
 sudo rm /var/www/html/index.nginx-debian.html 
+
+# Index page prints Hello World!
 sudo echo "Hello World!" | sudo tee -a /var/www/html/index.nginx-debian.html
+
+# Make nginx listen on port 80
 sudo sed -i "s/\tlisten [0-9].* default_server;*/\tlisten 80 default_server;/" /etc/nginx/sites-enabled/default
 sudo sed -i "s/\tlisten \[::\]:[0-9].* default_server;*/\tlisten [::]:80 default_server;/" /etc/nginx/sites-enabled/default
 sudo sed -i "s/\tlisten [0-9].* default_server;*/\tlisten 80 default_server;/" /etc/nginx/sites-available/default
 sudo sed -i "s/\tlisten \[::\]:[0-9].* default_server;*/\tlisten [::]:80 default_server;/" /etc/nginx/sites-available/default
+
+# Allow nginx to pass through the firewall
+ufw allow 'Nginx HTTP'
+
 # Set /redirect_me to redirect to another webpage
 new_url="\troot \/var\/www\/html;\n\trewrite ^\/redirect_me$ https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
 sudo sed -i "s/\troot \/var\/www\/html;/$new_url/" /etc/nginx/sites-available/default
-sudo service nginx restart
+sudo service nginx start
