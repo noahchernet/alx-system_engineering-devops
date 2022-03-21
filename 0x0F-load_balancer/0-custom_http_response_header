@@ -2,7 +2,7 @@
 # Configure Nginx so that its HTTP response contains a
 # custom header (on both web-01 and web-02 servers) 
 
-new_url="\tserver_name _;\n\tadd_header X-Served-By ${hostname}"
+new_url="\tserver_name _;\n\tadd_header X-Served-By $HOSTNAME;"
 
 sudo sed -i "s/\tserver_name _;/$new_url/" /etc/nginx/sites-available/default
 sudo sed -i "s/\tserver_name _;/$new_url/" /etc/nginx/sites-enabled/default
