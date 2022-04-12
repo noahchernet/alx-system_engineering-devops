@@ -19,7 +19,9 @@ def main():
 
     for i in all_tasks:
         data[user_id].append(
-            {"task": i['title'], "completed": i['completed'], "username": username})
+            {"task": i['title'],
+             "completed": i['completed'],
+             "username": username})
 
     with open(user_id + '.json', 'w') as f:
         json.dump(data, f)
