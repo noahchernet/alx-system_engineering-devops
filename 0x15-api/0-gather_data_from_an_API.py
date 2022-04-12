@@ -10,8 +10,8 @@ def main():
     '''Program starts here'''
     user_id = argv[1]
     user_name = requests.get(
-        'https://jsonplaceholder.typicode.com/users/'
-        + user_id).json().get('name')
+        'https://jsonplaceholder.typicode.com/users/' +
+        user_id).json().get('name')
     # print("USER: ", user)
 
     completed_tasks = requests.get(
