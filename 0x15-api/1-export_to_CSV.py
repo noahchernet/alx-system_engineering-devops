@@ -12,7 +12,7 @@ def main():
     user_id = argv[1]
     user_name = requests.get(
         'https://jsonplaceholder.typicode.com/users/' +
-        user_id).json().get('name')
+        user_id).json().get('username')
     all_tasks = requests.get(
         'https://jsonplaceholder.typicode.com/todos',
         params={'userId': user_id}).json()
