@@ -10,13 +10,16 @@ def main():
     '''Program starts here'''
     user_id = argv[1]
     user_name = requests.get(
-        'https://jsonplaceholder.typicode.com/users/' + user_id).json().get('name')
+        'https://jsonplaceholder.typicode.com/users/'
+        + user_id).json().get('name')
     # print("USER: ", user)
 
     completed_tasks = requests.get(
-        'https://jsonplaceholder.typicode.com/todos', params={'userId': user_id, 'completed': 'true'}).json()
+        'https://jsonplaceholder.typicode.com/todos',
+        params={'userId': user_id, 'completed': 'true'}).json()
     all_tasks = requests.get(
-        'https://jsonplaceholder.typicode.com/todos', params={'userId': user_id}).json()
+        'https://jsonplaceholder.typicode.com/todos',
+        params={'userId': user_id}).json()
 
     print("Employee", user_name, "is done with tasks(" +
           str(len(completed_tasks)) + "/" + str(len(all_tasks)) + "):")
