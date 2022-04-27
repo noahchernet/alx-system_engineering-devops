@@ -1,21 +1,17 @@
 #!/usr/bin/python3
-"""Module 0-subs
-Contains function number_of_subscribers()
 """
+Contains the number_of_subscribers function
+"""
+
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """Get the number of subscribers for the subreddit.
-    If the subreddit is not found, the function returns 0"""
-    r = requests.get(
-        'https://www.reddit.com/r/{}/about.json'.format(subreddit),
-        headers={'user-agent': 'Mozilla/5.0' +
-                 '(X11; Ubuntu; Linux x86_64; rv:99.0)' +
-                 'Gecko/20100101 Firefox/99.0'})
-
-    subs = r.json().get('data').get('subscribers')
-
-    if subs == '' or subs is None:
+    """returns the number of subscribers for a given subreddit"""
+    if subreddit is None or type(subreddit) is not str:
         return 0
+    r = requests.get('http://www.reddit.com/r/{}/about.json'.format(subreddit),
+                     headers={'User-Agent': 'Python/requests:APIproject:\
+v1.0.0 (by /u/aaorrico23)'}).json()
+    subs = r.get("data", {}).get("subscribers", 0)
     return subs
