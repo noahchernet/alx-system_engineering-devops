@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Fixes the bug in the server, but more succinctly that 0-nginx_likes_port_80
-# { IFS="/ " read -ra } <<< "$(sudo netstat -tulpn | grep "nginx" | head -1)" 
-ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-sudo service nginx start
+# Replace nginx
+cat /etc/nginx/sites-available/default > /etc/nginx/sites-enabled/default
+service nginx restart
 rm /run/nginx.pid
