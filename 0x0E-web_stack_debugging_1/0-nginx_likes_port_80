@@ -2,16 +2,6 @@
 # Fixes the bug in the server
 # Changes the listening port of nginx from 8080 to 80 (http)
 
-# Kill the nginx service running in the background
-OLDIFS=$IFS
-
-IFS="/ "
-read -ra net <<< "$(sudo netstat -tulpn | grep "nginx" | head -1)"
-sudo kill -2 "${net[6]}"
-IFS=$OLDIFS
-
-sudo sed -i "s/\tlisten [0-9].* default_server;*/\tlisten 80 default_server;/" /etc/nginx/sites-enabled/default
-sudo sed -i "s/\tlisten \[::\]:[0-9].* default_server;*/\tlisten [::]:80 default_server/" /etc/nginx/sites-enabled/default
-sudo sed -i "s/\tlisten [0-9].* default_server;*/\tlisten 80 default_server;/" /etc/nginx/sites-available/default
-sudo sed -i "s/\tlisten \[::\]:[0-9].* default_server;*/\tlisten [::]:80 default_server/" /etc/nginx/sites-available/default
-sudo service nginx restart
+sudo rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx start
